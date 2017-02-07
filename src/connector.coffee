@@ -420,6 +420,7 @@ onOnline = ->
 # it is a private message.
 onStanza = (stanza) ->
   @emit "data", stanza
+  @logger.debug stanza
 
   if stanza.is "message"
     if stanza.attrs.type is "groupchat"
@@ -451,7 +452,6 @@ onStanza = (stanza) ->
       # Ignore chat history
       return if stanza.getChild "delay"
       fromJid = new xmpp.JID stanza.attrs.from
-	  @logger.debug fromJid.bare().toString(), body
       @emit "privateMessage", fromJid.bare().toString(), body
 
     else if not stanza.attrs.type
