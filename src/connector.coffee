@@ -451,6 +451,7 @@ onStanza = (stanza) ->
       # Ignore chat history
       return if stanza.getChild "delay"
       fromJid = new xmpp.JID stanza.attrs.from
+	  @logger.debug fromJid.bare().toString(), body
       @emit "privateMessage", fromJid.bare().toString(), body
 
     else if not stanza.attrs.type
