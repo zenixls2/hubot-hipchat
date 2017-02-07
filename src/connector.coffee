@@ -429,7 +429,7 @@ onStanza = (stanza) ->
       fromChannel = fromJid.bare().toString()
       fromNick = fromJid.resource
       # Ignore our own messages
-      return if fromNick is @name
+      # return if fromNick is @name
       # Look for body msg
       body = stanza.getChildText "body"
       # look for Subject: http://xmpp.org/extensions/xep-0045.html#subject-mod
